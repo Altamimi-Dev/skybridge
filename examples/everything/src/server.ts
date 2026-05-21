@@ -1,4 +1,4 @@
-import { intentMiddleware } from "@alpic-ai/insights";
+import { feedbackMiddleware, intentMiddleware } from "@alpic-ai/insights";
 import { McpServer } from "skybridge/server";
 import { z } from "zod";
 
@@ -10,6 +10,7 @@ const server = new McpServer(
   { capabilities: {} },
 )
   .mcpMiddleware(intentMiddleware())
+  .mcpMiddleware(feedbackMiddleware())
   .registerTool(
     {
       name: "show-everything",
